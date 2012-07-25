@@ -934,7 +934,7 @@ patch_dir(Orig, ArchiveExt) ->
 	["nibe", RevApp, RevArchive | RevTop] ->
 	    App = reverse(RevApp),
 	    case funny_splitwith(RevArchive, $.) of
-		{Ext, Base} when Ext =:= ArchiveExt, Base =:= App ->
+		{Ext, Base} when [$.|Ext] =:= ArchiveExt, Base =:= RevApp ->
 		    %% Orig archive
 		    Top = reverse([reverse(C) || C <- RevTop]),
 		    Dir = join(Top ++ [App, "ebin"], "/"),
